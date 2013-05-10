@@ -1,8 +1,10 @@
-/*YP Horizontal Framework B v2.1 - 4/4/2013
+/*YP Horizontal Framework B v3 - 4/4/2013
 fixed calculators and typography 
 MODULE STYLING added 4/4/2013
 Updated mobile menu 4/5/2013
 Markup-Cleanup 4/22/2013
+Consolidated widget-button class with the module buttons 5-09-2013
+changed logo, slogan, cta, phone css 5-09-2013
  */
 
 @import url("gfx/wp-skeleton.css"); 
@@ -12,9 +14,9 @@ header, footer, nav, section, article {display: block;}
 body {
 	margin: 0;
 	color: #000;
-	font-size : 100%/1.4;
-	font-family:Verdana, Geneva, sans-serif;
-	
+	font-size : 14px;
+	line-height:160%;
+	font-family:Verdana, Geneva, sans-serif; /* Set default font styles here */
 	}
 	body { 
 		/* Set background image POSITION and REPEAT here! */
@@ -67,6 +69,7 @@ address {
 	margin-bottom : 15px; 
 	font-size : 14px; 
 	color: black;
+	line-height:160%;
 	}
 /* add text styling to divs as Websplanet loves to wrap text in divs throughout the platform, just don't include a margin */
 div {
@@ -121,9 +124,7 @@ div {
 	div.diy-f-spot div.calc-input-container span {
 		color: black; /* Replace with theme specific "dark" text color */
 	}	
-p, span, div {
-	line-height:160%;
-}
+
 ul, 
 ol { 
 	margin : 0 0 1.5em 24px; 
@@ -259,14 +260,14 @@ div#wrapper-content { }
 }
 
 /* logo */
-#logo {
+#logo-slogan {
 	padding: 20px 0px;
 	}
 /* add logo font styling here */	
-#logo a, #logo a:hover, #logo a div, #logo a:hover div {
+a.logo , a.logo:hover, a.logo div, a.logo:hover div {
 	font-size: 45px;
 	line-height: 120%;
-	text-align:center;
+	text-align:left;
 	text-transform:uppercase;
 	font-weight:normal;
 	text-decoration:none;
@@ -279,7 +280,7 @@ div.slogan, div.slogan div { }
 
 /* Phone: this div must expand. Style with CSS or use the sliding door css technique  */
 /* positioning and box model styling go here */
-#phone-number {
+#phone-cta {
 	padding:5px 20px;
 	position:absolute;
 	right:20px;
@@ -289,9 +290,9 @@ div.slogan, div.slogan div { }
 	background-color:#666;
 }
 /* font styling goes here */
-#phone-number div, 
-#phone-number a div, 
-#phone-number a:hover div {
+.phone-number, 
+.phone-number a, 
+.phone-number a:hover {
 	font-size: 25px;
 	line-height: 35px;
 	text-align:center;
@@ -299,8 +300,19 @@ div.slogan, div.slogan div { }
 	color:#fff; 
 	text-decoration:none; 
 }	
+
+.tagline2, .tagline2 div {
+	font-size: 25px;
+	line-height: 35px;
+	text-align:center;
+	text-transform:uppercase;
+	color:#fff; 
+	text-decoration:none; 
+	}
+	
+	
 /* mobile phone number */	
-#m-phone-number {
+#m-phone-cta {
 	display:none;
 	position:relative;
 	padding:5px 0px;
@@ -310,16 +322,20 @@ div.slogan, div.slogan div { }
 	clear:left;
 	margin:10px auto;
 }	
-#m-phone-number div,
-#m-phone-number a div,
-#m-phone-number a:hover div {
-	font-size: 25px;
-	line-height: 35px;
-	text-align:center;
-	text-transform:uppercase;
-	color:#fff; 
+
+#m-phone-cta a, #m-phone-cta a:hover {
 	text-decoration:none;
-}	
+	}
+
+a .m-phone-number, a:hover .m-phone-number {
+		font-size: 25px;
+		line-height: 35px;
+		text-align:center;
+		text-transform:uppercase;
+		color:#fff; 
+		text-decoration:none !important;
+	}	
+	
 
 /* header image */
 /* WP wraps #siteMainDynHeaderImage1 with #header-image-wrapper-1 by defult but removes it once the image is replaced; this may change in the future */
@@ -340,15 +356,19 @@ img#siteMainDynHeaderImage1 {
 }
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {
-	#phone-number {
+	#phone-cta {
 		display:none;
 	}
-	#logo {
-		text-align:center;
-	}
-	#m-phone-number {
+	
+	#m-phone-cta {
 		display:block;
 	}	
+	
+	a.logo , a.logo:hover, a.logo div, a.logo:hover div {
+	text-align:center;
+	}
+	
+
 }
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width: 479px) { 
@@ -356,6 +376,10 @@ img#siteMainDynHeaderImage1 {
 		max-width:300px;
 		height:auto;		
 	}	
+	a.logo , a.logo:hover, a.logo div, a.logo:hover div {
+	text-align:center;
+	}
+
 }	
 
 /* footer */
@@ -824,7 +848,13 @@ div.unit-calc li.unit-menu ul.unit-type li a:hover {
     height:420px;
     display:inherit;
 }
-.widget-button{
+
+/* widget buttons and FAQ Jobs modules */
+
+.widget-button,
+#FAQ_category_list > li > a,
+#FAQ_category_list > li > a:visited,
+.jobs-apply a  {
 	width:auto; 
 	height:auto; 
 	text-align:center;  
@@ -835,10 +865,19 @@ div.unit-calc li.unit-menu ul.unit-type li a:hover {
 	background-color: #999;
 	line-height: 40px;
 }
-div.widget-button:hover{
+
+div.widget-button:hover,
+#FAQ_category_list > li > a:hover,
+#FAQ_category_list > li > a:focus,
+#FAQ_category_list > li > a:active,
+.jobs-apply a:hover,
+.jobs-apply a:active,
+.jobs-apply a:focus
+{
 	cursor:pointer;
 	background-color:#C60;
 }
+
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
     .widget-popup{
@@ -1008,7 +1047,6 @@ a.websplanet {
 	text-decoration: underline;
 }
 .footerLinks {
-    float: right;
     text-align: left;
 }
 .footerText {
@@ -1321,29 +1359,7 @@ div.Events_item {
 div.Events_item_desc {
 	clear: both;
 }
-#FAQ_category_list > li > a,
-#FAQ_category_list > li > a:visited {
-    background-color: red; /* replace with theme color */
-    border-radius: 10px 10px 10px 10px;
-    font-family: Verdana,arial,sans-serif; /* replace with theme fonts */
-    font-size: 21px;
-    height: auto;
-    line-height: 40px;
-    text-align: center;
-    width: auto;
-    z-index: 1001;
-    color: #fff;
-    border: none;
-}
-#FAQ_category_list > li > a:hover,
-#FAQ_category_list > li > a:focus,
-#FAQ_category_list > li > a:active {
-	cursor:pointer;
-	box-shadow: 0 0 10px #000000 inset;
-	-webkit-box-shadow: 0 0 10px #000000 inset;
-	background: red; /* replace with theme color */
-    filter: progid:DXImageTransform.Microsoft.gradient( enabled=false );
-}
+
 ul#FAQ_category_list span {
 	margin: 0 12px 24px;
 }
@@ -1368,27 +1384,7 @@ div#jobs-module ul {
 .jobs-title a:active {
 	text-decoration: underline;
 }
-.jobs-apply a {
-    background-color: #E40A0A; /* replace with theme color */
-    border-radius: 10px 10px 10px 10px;
-    font-family: Verdana,arial,sans-serif;/* replace with theme fonts */
-    font-size: 16px;
-    height: auto;
-    line-height: 40px;
-    text-align: center;
-    width: 100%;
-    z-index: 1001;
-    color: #fff;
-    border: none;
-}
-.jobs-apply a:hover,
-.jobs-apply a:active,
-.jobs-apply a:focus {
-    cursor:pointer;
-	box-shadow: 0 0 10px #000000 inset;
-	-webkit-box-shadow: 0 0 10px #000000 inset;
-	background: #E40A0A; /* replace with theme color */
-}
+
 
 /* --------------- end Websplanet module fixes --------------- */
 
