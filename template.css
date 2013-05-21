@@ -509,7 +509,7 @@ ul#nav {
 /* Navigation  media queries */
 
 @media only screen and (max-width: 767px) {
-	 #wrapper-menu {display:none; line-height: 0;}
+	 #wrapper-menu {display:none;}
 	 #menu { display:none; }
 	 
 	 a#navTab /* mobile menu open button */{
@@ -548,6 +548,7 @@ ul#nav {
 		z-index: 800;
 		display: block;
 		margin:0 auto;
+		line-height: 0;
 	}	
 	#m-menu-content {
 		display: none; /* hides the menu */
